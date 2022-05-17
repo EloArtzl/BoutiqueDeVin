@@ -1,0 +1,53 @@
+
+.mainFullContentItem{
+    flex-basis: 100%;
+    flex-wrap: wrap;
+}
+.bottlePicture{
+    width: 30%;
+    margin: 0;
+    padding: 0;
+}
+.presentContent{
+    width: 60%;
+    flex-basis: 60%;
+}
+.mainContent{
+    /* background-color:rgb(30,30,30); */
+    padding: 2vh 5vw;
+    
+}
+.mainContentItem{
+    /* background-color: rgb(209, 206, 206); */
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid #bd9850 ;
+    box-shadow: 1px 1px 5px #bd9850;
+
+
+}
+.mainContentItem h2{
+    text-align: center;
+    
+    }
+.mainContentItem ul,.mainContentItem p{
+text-align: justify;
+
+}
+.pushDiv{
+    flex-basis: 90%;
+}
+.icoCatalogContainer{
+    flex-basis: 100%;
+    display: flex;
+}
+.icoCatalog{
+    width: 10px;
+    padding: 5px;
+    flex-basis: 5%;
+}
+.name{
+    color: #778745;
+}
+ul{
+    list-style-type: circle;
+}
