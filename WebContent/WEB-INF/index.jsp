@@ -1,13 +1,15 @@
-<!DOCTYPE jsp>
-<jsp lang="en">
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="flexStyle.css">
-    <link rel="stylesheet" href="indexStyle.css">
-    <link rel="stylesheet" href="headerStyle.css">
-    <link rel="stylesheet" href="footerStyle.css">
+    <link rel="stylesheet" type="text/css"href="css/flexStyle.css" />
+    <link rel="stylesheet" type="text/css" href="css/indexStyle.css" />
+    <link rel="stylesheet" type="text/css"href="css/headerStyle.css" />
+    <link rel="stylesheet"type="text/css" href="css/footerStyle.css"/>
 
     
     <title>Document</title>
@@ -37,10 +39,10 @@
                 <div class="mainFullContentItem verticalItem textLink" id="ourStory"><!-- contenu principal -->
                     <h1>Notre histoire</h1>
                     <p>
-                        Nous voulons &eacutetablir une relation durable et à long terme avec 
-                        nos clients, une relation qui peut être mise à profit pour cr&eacuteer 
-                        un avantage concurrentiel et les aider à atteindre leurs objectifs 
-                        et à d&eacutevelopper leur entreprise. Nous sommes une entreprise durable
+                        Nous voulons &eacutetablir une relation durable et Ã  long terme avec 
+                        nos clients, une relation qui peut Ãªtre mise Ã  profit pour cr&eacuteer 
+                        un avantage concurrentiel et les aider Ã  atteindre leurs objectifs 
+                        et Ã  d&eacutevelopper leur entreprise. Nous sommes une entreprise durable
                          et innovante, ce qui signifie que nous ne vendons pas seulement des
                          vins, nous proposons un service premium qui permettra a vous tous de 
                          d&eacutevelopper une passion pour les vins d'exception. 
@@ -95,4 +97,4 @@
                 <div class="underFooter horizontalItem ">5</div>
             </div>
 </body>
-</jsp>
+</html>
