@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ServeletCatalog
  */
-@WebServlet("/ServeletCatalog")
+@WebServlet("/catalogPage")
 public class ServeletCatalog extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -29,6 +29,7 @@ public class ServeletCatalog extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		this.getServletContext().getRequestDispatcher("/WEB-INF/catalogPage.jsp").forward(request, response);
+		
 	}
 
 	/**

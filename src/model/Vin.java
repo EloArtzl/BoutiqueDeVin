@@ -13,25 +13,14 @@ public class Vin {
 	private int id;
     public static int actId;
 	
-	public Vin(String nom, double volume, String chateau, String region, int annee, double prix,
-			String pourcentageAlcool, String description, String urlImage) {
-		super();
-		this.nom = nom;
-		this.volume = volume;
-		this.chateau = chateau;
-		this.region = region;
-		this.annee = annee;
-		this.prix = prix;
-		this.pourcentageAlcool = pourcentageAlcool;
-		this.description = description;
-		this.urlImage = urlImage;
+	
 		
-		this.id=actId;
-        actId++;
-	}
+		
 
 	public int getId() {
-		return id;
+		this.id=actId;
+        actId++;
+		return this.id;
 	}
 
 	public void setId(int id) {

@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import model.Personne;
+
 /* 
  * 4. on peut faire une interface entre catalogue et basket pour masquer le catalogue à Basket
  * ou de faire une copie 
@@ -21,8 +21,13 @@ public class Basket {
         this.catalog = c2;
        
         this.comProducts = new HashMap<Integer,Integer>();
-        this.setBasketOwner(new Personne(p.getName(),p.getSirname(),p.getEmail()));
-        this.setBasketOwner(p);
+        Personne p1= new Personne();
+        p1.setEmail(p.getEmail());
+        p1.setName(p.getName());
+        p1.setSirname(p.getSirname());
+        
+        this.setBasketOwner(p1);
+        
 
     }
    //add an article to the basket

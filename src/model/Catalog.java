@@ -52,15 +52,28 @@ public class Catalog{
     	}
     	return false;
     }
-    
-    public void addProduct(String nom, double volume, String chateau, String region, int annee, double prix,
-			String pourcentageAlcool, String description, String urlImage, int theQuantity) throws ErrorAdd{
-    	Vin vin= new Vin(nom, volume, chateau, region, annee, prix,
-    			 pourcentageAlcool,  description,  urlImage); 
-    	 
+    public Vin setVin(Vin v) {
+    	Vin vin= new Vin();
+    	vin.setAnnee(v.getAnnee());
+    	vin.setChateau(v.getChateau());
+    	vin.setDescription(v.getDescription());
+    	vin.setId(v.getId());
+    	vin.setNom(v.getNom());
+    	vin.setPourcentageAlcool(v.getPourcentageAlcool());
+    	vin.setPrix(v.getPrix());
+    	vin.setRegion(v.getRegion());
+    	vin.setUrlImage(v.getUrlImage());
+    	vin.setVolume(v.getVolume());
+    	
+    	return vin;
+    	
+    }
+    public void addProduct(Vin v, int quantity) throws ErrorAdd{
+    	
+    	 Vin vin=this.setVin(v);
     
     	 if(this.products.add(vin)) // add the product in the hashset and if it 
-    		 this.quantities.put(vin.getId(), theQuantity);
+    		 this.quantities.put(vin.getId(), quantity);
     		 
     	 
     	 else
@@ -90,12 +103,11 @@ public class Catalog{
     	// de ce fait si on supprime et crée un autre produit 
     	
     	
-    	Vin p1= new Vin(oldVin.getNom(),oldVin.getVolume(), oldVin.getChateau(),oldVin.getRegion(), 
-    			oldVin.getAnnee(), price,oldVin.getPourcentageAlcool(), oldVin.getDescription(),
-    			oldVin.getUrlImage());
+    	Vin vin=this.setVin(oldVin);
+    	vin.setPrix(price);
     	 //maintenant on supprime OldProduct du catalog
     	if(this.products.remove(oldVin))
-    		this.products.add(p1);
+    		this.products.add(vin);
     	else
     		System.out.println("Suppression impossible");
     	

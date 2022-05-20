@@ -1,7 +1,7 @@
 package model;
 
 public class Main {
-	public static void main(String[] args) throws ErrorAdd {
+	/*public static void main(String[] args) throws ErrorAdd {
 		Annuaire all_customers= Annuaire.getInstance();
 		// we try to create , to add customer if something goes wrong ,
 		//an exception will be triggered
@@ -38,5 +38,6 @@ public class Main {
 		}
   System.out.println(all_customers);
 	}
+	*/
 }
 
