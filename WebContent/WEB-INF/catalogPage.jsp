@@ -12,23 +12,7 @@
 </head>
 <body>
     <div class="secondaryAxisFlexContent"><!-- axe principal : ordonnée -->
-        <div class="header" id="secondTypeHeader">
-            <div class="navContainer primaryAxisflexContent"><!-- axe principal : abscisse -->
-                <div class="horizontalItem"><a href="index.jsp"><img class="logo" src="Assets/transparentModel.png" alt="logo grappe de raison"></a></div>
-                <div class="horizontalItem textLink"><a href="index.jsp" class="whiteFont">Accueil</a></div>
-                <div class="horizontalItem textLink"><a href="index.jsp#ourStory"class="whiteFont">Histoire</a></div>
-                <div class="horizontalItem textLink"><a href="index.jsp#ourWines" class="whiteFont">Nos vins</a></div>
-                <div class="horizontalItem textLink"><a href="catalogPage.jsp" class="whiteFont">Catalogue</a></div>
-                <div class="horizontalItem ico"><a href="basketPage.jsp"><img class="icoImg" src="Assets/BASKETwhite.png" alt="panier cadie"></a></div>
-                <div class="horizontalItem ico"><a href="logInPage.jsp"><img class="icoImg" src="Assets/ACCOUNTwhite.png" alt="mon compte bonhomme"></a></div>
-            </div><!-- fin de l'axe principal : abscisse -->
-            <div>
-                <h1 id="bigMainTitle">
-                    Vins d'exception
-                </h1>
-            </div>
-            
-        </div>
+        <%@include file="hearder.jsp" %>
     
         <div class="mainContent targetInjection primaryAxisflexContent max2itemContainer">
             <!-- Catalogue :  -->
@@ -247,14 +231,7 @@
                 </div>
 
         </div>
-        <div class="footer primaryAxisflexContent ">
-            <div class="mainUnderFooter horizontalItem textLink">C'est le footer !!!</div>
-            <div class="underFooter horizontalItem ">1</div>
-            <div class="underFooter horizontalItem ">2</div>
-            <div class="underFooter horizontalItem ">3</div>
-            <div class="underFooter horizontalItem ">4</div>
-            <div class="underFooter horizontalItem ">5</div>
-        </div>
+         <%@include file="footer.jsp" %>
     </div><!-- fin de l'axe principal : ordonn&eacutee -->
 
 </body>
