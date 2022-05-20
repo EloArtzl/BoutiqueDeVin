@@ -13,14 +13,14 @@
 <body>
     <div class="secondaryAxisFlexContent"><!-- axe principal : ordonnée -->
         <%@include file="hearder.jsp" %>
-        <div class="mainContent primaryAxisflexContent max3itemContainer">
+         <div class="mainContent primaryAxisflexContent max3itemContainer">
             <div class="">
                 <div class="verticalItem">
                     <h1>Panier</h1>
                 </div>
                 <div class="verticalItem">
                     <table class="targetInjection"> 
-                        <!-- pour l'injectionn viser l'intérieur du span comme poour le catalogue -->
+                        <!-- pour l'injectionn viser l'int�rieur du span comme poour le catalogue -->
                         <tr>
                             <th>D&eacutesignation</th>
                             <th>Quantit&eacute</th>
@@ -33,6 +33,14 @@
                             <td class="price"><span>30</span> &euro;</td>
                             <td class="priceXquanntity"><span>90</span> &euro;</td>
                         </tr>
+                        <!-- 
+                            <tr>
+                                <td class="name"><span></span></td>
+                                <td class="quantity"><span></span></td>
+                                <td class="price"><span></span> &euro;</td>
+                                <td class="priceXquanntity"><span></span> &euro;</td>
+                            </tr>
+                         -->
                         <tr>
                             <th>Total</th>
                             <th></th>

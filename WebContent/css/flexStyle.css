@@ -33,17 +33,21 @@
 
 }
 .max2itemContainer{
+    display: flex;
     flex-wrap: wrap;
+    flex-basis: 100%;
 }
 .max2item{
-    flex-basis: 50%;
+    flex-basis: 45%;
 
 }
 .itemInput{
     display: flex;
     flex-wrap: wrap;
+    /* justify-content: space-around; */
     flex-basis: 100%;
     flex-grow: 1;
+
 }
 .itemInput label{
     width: 50%;
