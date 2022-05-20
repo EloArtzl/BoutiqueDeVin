@@ -1,13 +1,17 @@
 package model;
 
 public class Personne {
+	
+
 	private String name;
 	private String sirname;
 	private String email;
+	private String motDepasse;
+	
 	private int id;
     public static int pId;
     
-   public Personne(String _name, String _prenom, String _email){
+  /* public Personne(String _name, String _prenom, String _email){
         // super() appel le constructeur de la classe héritée
         this.name=_name;
         this.sirname=_prenom;
@@ -16,6 +20,7 @@ public class Personne {
         pId++;
 
     }
+    */
 
 	public String getEmail() {
 		return email;
@@ -42,11 +47,24 @@ public class Personne {
 	}
 
 	public int getId() {
+		pId++;
+		this.id=pId;
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	
+	
+	@Override
+	public String toString() {
+		return "Personne [name=" + name + ", sirname=" + sirname + ", email=" + email + ", id=" + id + "]";
+	}
+
+	public String getMotDepasse() {
+		return motDepasse;
+	}
+
+	public void setMotDepasse(String motDepasse) {
+		this.motDepasse = motDepasse;
 	}
 	
 	//fonction rechercher Bouteille

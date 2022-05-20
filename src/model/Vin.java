@@ -1,5 +1,4 @@
 package model;
-
 public class Vin {
 	private String nom;
 	private double volume;
@@ -11,18 +10,21 @@ public class Vin {
 	private String description;
 	private String urlImage;
 	
-	public Vin(String nom, double volume, String chateau, String region, int annee, double prix,
-			String pourcentageAlcool, String description, String urlImage) {
-		super();
-		this.nom = nom;
-		this.volume = volume;
-		this.chateau = chateau;
-		this.region = region;
-		this.annee = annee;
-		this.prix = prix;
-		this.pourcentageAlcool = pourcentageAlcool;
-		this.description = description;
-		this.urlImage = urlImage;
+	private int id;
+    public static int actId;
+	
+	
+		
+		
+
+	public int getId() {
+		this.id=actId;
+        actId++;
+		return this.id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNom() {
@@ -97,6 +99,37 @@ public class Vin {
 		this.urlImage = urlImage;
 	}
 	
+	// le hashcode donne un indice qui servira a ajoué un produit dans le cataloque, il est calculé en additionnant les lettres et le prix d'un produit
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+			long temp;
+			temp = Double.doubleToLongBits(prix);
+			result = prime * result + (int) (temp ^ (temp >>> 32));
+			
+			return result;
+		}
+		
+		
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Vin other = (Vin) obj;
+			if (nom == null) {
+				if (other.nom != null)
+					return false;
+			} else if (!nom.equals(other.nom))
+				return false;
+			if (Double.doubleToLongBits(prix) != Double.doubleToLongBits(other.prix))
+				return false;
+			return true;
+		}
 	
 	
 	

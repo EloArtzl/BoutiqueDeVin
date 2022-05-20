@@ -4,13 +4,4 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
 id="WebApp_ID" 
 version="4.0">
   
-  
-  <servlet>
-   	<servlet-name>Servelet1</servlet-name>
-   	<servlet-class>servelet_files.Servelet1</servlet-class>
-  </servlet>
-  <servlet-mapping>
-   		<servlet-name>Servelet1</servlet-name>
-   		<url-pattern>/index.jsp</url-pattern>
-  </servlet-mapping>
 </web-app>
