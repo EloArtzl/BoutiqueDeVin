@@ -12,5 +12,14 @@ version="4.0">
   <servlet-mapping>
    		<servlet-name>Servelet1</servlet-name>
    		<url-pattern>/index.jsp</url-pattern>
-  </servlet-mapping>
+   </servlet-mapping>
+   
+    <servlet>
+   	<servlet-name>ServeletCatalog</servlet-name>
+   	<servlet-class>servelet_files.ServeletCatalog</servlet-class>
+  </servlet>
+  <servlet-mapping>
+   		<servlet-name>ServeletCatalog</servlet-name>
+   		<url-pattern>/catalogPage.jsp</url-pattern>
+   </servlet-mapping>
 </web-app>

@@ -1,13 +1,13 @@
-<!DOCTYPE jsp>
-<jsp lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="flexStyle.css">
-    <link rel="stylesheet" href="headerStyle.css">
-    <link rel="stylesheet" href="footerStyle.css">
-    <link rel="stylesheet" href="catalogStyle.css">
+    <link rel="stylesheet" href="css/flexStyle.css">
+    <link rel="stylesheet" href="css/headerStyle.css">
+    <link rel="stylesheet" href="css/footerStyle.css">
+    <link rel="stylesheet" href="css/catalogStyle.css">
     <title>Document</title>
 </head>
 <body>
@@ -258,7 +258,7 @@
     </div><!-- fin de l'axe principal : ordonn&eacutee -->
 
 </body>
-</jsp>
+</html>
 <!-- 
 
     La classe mère comporte une classe targetInjection afin de cibler l'innjection de code jsp
