@@ -1,15 +1,24 @@
-package model;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   package model;
 
 public class Admin extends Personne {
 	String numTel;
+	private static Admin instance=null;
 	public Admin(String nom, String prenom, String email, String num_tel) {
 		super(nom, prenom, email);
 		this.numTel=num_tel;
 	}
-	public void addVin() {
+	public static Admin getInstance(){
+        if(instance==null){
+            instance= new Admin("Toto","tutu","toto@gmail.com","0788889978");
+            
+        }
+        return instance;
+    }
+	/*
+public void addVin() {
 		//code
 	}
-	public void deleteVin() {
+	//public void deleteVin() {
 		//code
 	}
 	public void searchVin() {
@@ -18,4 +27,5 @@ public class Admin extends Personne {
 	public void modifyVin() {
 		//code
 	}
+	*/
 }

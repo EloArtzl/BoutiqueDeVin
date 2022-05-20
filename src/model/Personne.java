@@ -1,9 +1,13 @@
 package model;
 
 public class Personne {
+	
+
 	private String name;
 	private String sirname;
 	private String email;
+	private String motDepasse;
+	
 	private int id;
     public static int pId;
     
@@ -47,6 +51,11 @@ public class Personne {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	@Override
+	public String toString() {
+		return "Personne [name=" + name + ", sirname=" + sirname + ", email=" + email + ", id=" + id + "]";
 	}
 	
 	//fonction rechercher Bouteille
