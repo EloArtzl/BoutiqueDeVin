@@ -12,10 +12,32 @@
     box-shadow: 1px 1px 5px #bd9850;
 }
 
-.introConnect{
+h2{
     margin: 2vh 2vw;
     text-align: justify;
 }
+.accountZone{
+    text-align: center;
+}
 .connectZone{
     text-align: center;
+}
+.introConnect{
+    text-align: center;
+    margin: 2vh 2vw;
+
+}
+
+#connectButton{
+    text-align: center;
+    justify-content: space-evenly;
+}
+#addProduct div input,textarea{
+    border-radius: 10px;
+    min-height: 30px;
+    padding: 5px;
+    border : 1px solid grey;
+}
+#formLogIn div input{
+    text-align: left;
 }

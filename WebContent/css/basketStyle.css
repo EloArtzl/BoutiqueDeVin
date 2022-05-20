@@ -1,3 +1,6 @@
+.mainContent{
+    min-height: 60vh;
+}
 .mainContent table{
     border-collapse: collapse;
 }
@@ -5,12 +8,14 @@
     border: 1px solid #bd9850;
     text-align: center;
     vertical-align: middle;
+    padding: 2vh 2vw;
+
     background-color: #bd9850;
 }
 .mainContent td{
     text-align: center;
     vertical-align: middle;
-    padding: 1vh 1vw;
+    padding: 2vh 2vw;
     border: 1px solid #bd9850;
 
 }
