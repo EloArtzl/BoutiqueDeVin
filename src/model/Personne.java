@@ -4,6 +4,13 @@ public class Personne {
 	
 
 	private String name;
+	public Personne() {
+		super();
+		// TODO Auto-generated constructor stub
+	pId++;
+	this.id=pId;
+	}
+
 	private String sirname;
 	private String email;
 	private String motDepasse;
@@ -47,8 +54,7 @@ public class Personne {
 	}
 
 	public int getId() {
-		pId++;
-		this.id=pId;
+		
 		return id;
 	}
 
