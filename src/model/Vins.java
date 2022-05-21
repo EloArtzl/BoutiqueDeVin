@@ -1,4 +1,4 @@
- package model;
+package model;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -19,7 +19,7 @@ public class Vins implements Serializable{
 	
 	private Set <Vin> lesVins;// stocks the all the products
 	private Map <Integer,Integer> quantities; 
-
+	private static Vins instance=null;
 	/*public HashSet<Vin> getLesVins() {
 		return lesVins;
 	}*/
@@ -46,11 +46,19 @@ public class Vins implements Serializable{
 		super();
 		this.lesVins= new HashSet <Vin>();
 	    this.quantities=new HashMap<Integer,Integer>();
-		// TODO Auto-generated constructor stub
+		
 	}
+	 public static Vins getInstance(){
+	        if(instance==null){
+	            instance= new Vins();
+	            
+	        }
+	        return instance;
+	    }
    public void initialise() {
-	   Vin v = new Vin("Vin rosée", 1,  "Chateau de la paix","Gironde", 2018, 198," 20%",  "Description ", "image1.jpeg");
+	   Vin v = new Vin("Vin rosée", 1,  "Chateau de la paix","Gironde", 2018, 198," 20%",  "Description vin", "image1.jpeg");
 	   this.quantities.put(v.getId(), 12);
+	   this.lesVins.add(v);
    }
    public Vin update(Vin v) {
 	   lesVins.add(v);
@@ -83,10 +91,12 @@ public class Vins implements Serializable{
 	    	res.setRegion(v.getRegion());
 	    	res.setUrlImage(v.getUrlImage());
 	    	res.setVolume(v.getVolume());
+	    	
+	    	return res;
 	    }
 	}
-	return res;
-	// TODO Auto-generated method stub
+	return null;
+	
 	
 }
    
@@ -213,7 +223,7 @@ public class Vins implements Serializable{
        }
 public Vin findById(int _id) {
 	Iterator<Vin> it= lesVins.iterator();
-   	String result ="";
+   	
    	while(it.hasNext()) {
    		Vin p=it.next();
    		if(p.getId()== _id) {
