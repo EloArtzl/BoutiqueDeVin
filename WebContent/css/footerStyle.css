@@ -8,10 +8,12 @@
 }
 .mainUnderFooter{
     flex-grow: 1;
+    flex-basis: 20%;
 }
 .underFooter{
     flex-grow: 2;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 @media (max-width: 730px){
     

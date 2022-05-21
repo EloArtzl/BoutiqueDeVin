@@ -34,7 +34,7 @@ text-align: justify;
 
 }
 .pushDiv{
-    flex-basis: 90%;
+    flex-basis: 80%;
 }
 .icoCatalogContainer{
     flex-basis: 100%;
@@ -50,4 +50,9 @@ text-align: justify;
 }
 ul{
     list-style-type: circle;
+}
+.searchbar{
+    padding: 1vh 0;
+    width: 98%;
+    text-align: center;
 }

@@ -17,6 +17,9 @@
         <div class="mainContent targetInjection primaryAxisflexContent max2itemContainer">
             <!-- Catalogue :  -->
                 <!-- nom, volume, ann&eacutee, chateau, region, prix, PourcentageAlcool, description, url_image -->
+                <div class="mainContentItem verticalItem">
+                    <input class="searchbar " onkeyup="search_animal()" type="text" name="search" placeholder="Chercher un vin par son nom et appuyer sur EntrÈe">
+                </div>
                 <div class="mainContentItem horizontalItem primaryAxisflexContent max2itemContainer max2item textLink">
                     <h2 class="name mainFullContentItem ">Sauternes Blanc 2019</h2>
                     <img class="bottlePicture horizontalItem " src="https://www.vinatis.com/64473-thickbox_default/chateau-haut-brion-2019-1er-cru-classe.png" alt="chateau haut brion boouteille 2019">
@@ -30,7 +33,7 @@
                                 <p class="year">Mill&eacutesime : <span>2019</span></p>
                             </li>
                             <li>
-                                <p class="castle">Ch√¢teau : <span>Mission Haut Brian</span></p>
+                                <p class="castle">Ch‚teau : <span>Mission Haut Brian</span></p>
                             </li>
                             <li>
                                 <p class="region">R&eacutegion : <span>P&eacutessac L&eacuteogan</span></p>
@@ -46,10 +49,17 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="icoCatalogContainer" style="visibility:hidden;">
+                    <div class=" icoCatalogContainer">
                         <div class="pushDiv"></div>
-                        <img class="icoCatalog" src="Assets/crayon.png" alt="crayon modification">
-                        <img class="icoCatalog" src="Assets/croix.png" alt="croix suppression">
+                        <!-- Enleve une quantitÈ du panier -->
+                        <img class="icoCatalog userOnly" src="Assets/moins.png" alt="moins suppression panier">
+                        <!-- affiche le nombre prÈsent dans le panier -->
+                        <input class="icoCatalog userOnly" value="0" style="text-align: center;">  
+                        <!-- Ajouter une quantitÈ au panier -->
+                        <img class="icoCatalog userOnly" src="Assets/plus.png" alt="plus ajout panier" > 
+                        <!-- <img class="icoCatalog" src="Assets/ajouter-un-panier.png" alt="ajout au panier"> -->
+                        <img class="icoCatalog adminOnly" src="Assets/crayon.png" alt="crayon modification">
+                        <img class="icoCatalog adminOnly" src="Assets/croix.png" alt="croix suppression">
                     </div>
                     
                 </div>
@@ -66,7 +76,7 @@
                                 <p class="year">Mill&eacutesime : <span>2019</span></p>
                             </li>
                             <li>
-                                <p class="castle">Ch√¢teau : <span>Mission Haut Brian</span></p>
+                                <p class="castle">Ch‚teau : <span>Mission Haut Brian</span></p>
                             </li>
                             <li>
                                 <p class="region">R&eacutegion : <span>P&eacutessac L&eacuteogan</span></p>
@@ -83,10 +93,17 @@
                         </ul>
                     </div>
                 
-                    <div class=" icoCatalogContainer" style="visibility:visible;">
+                    <div class=" icoCatalogContainer">
                         <div class="pushDiv"></div>
-                        <img class="icoCatalog" src="Assets/crayon.png" alt="crayon modification">
-                        <img class="icoCatalog" src="Assets/croix.png" alt="croix suppression">
+                        <!-- Enleve une quantitÈ du panier -->
+                        <img class="icoCatalog userOnly" src="Assets/moins.png" alt="moins suppression panier">
+                        <!-- affiche le nombre prÈsent dans le panier -->
+                        <input class="icoCatalog userOnly" value="0" style="text-align: center;">  
+                        <!-- Ajouter une quantitÈ au panier -->
+                        <img class="icoCatalog userOnly" src="Assets/plus.png" alt="plus ajout panier" > 
+                        <!-- <img class="icoCatalog" src="Assets/ajouter-un-panier.png" alt="ajout au panier"> -->
+                        <img class="icoCatalog adminOnly" src="Assets/crayon.png" alt="crayon modification">
+                        <img class="icoCatalog adminOnly" src="Assets/croix.png" alt="croix suppression">
                     </div>
                 </div>
                 <div class="mainContentItem horizontalItem primaryAxisflexContent max2itemContainer max2item textLink">
@@ -102,7 +119,7 @@
                                 <p class="year">Mill&eacutesime : <span>2019</span></p>
                             </li>
                             <li>
-                                <p class="castle">Ch√¢teau : <span>Mission Haut Brian</span></p>
+                                <p class="castle">Ch‚teau : <span>Mission Haut Brian</span></p>
                             </li>
                             <li>
                                 <p class="region">R&eacutegion : <span>P&eacutessac L&eacuteogan</span></p>
@@ -118,10 +135,17 @@
                             </li>
                         </ul>
                     </div>
-                    <div class=" icoCatalogContainer" style="visibility:visible;">
+                    <div class=" icoCatalogContainer">
                         <div class="pushDiv"></div>
-                        <img class="icoCatalog" src="Assets/crayon.png" alt="crayon modification">
-                        <img class="icoCatalog" src="Assets/croix.png" alt="croix suppression">
+                        <!-- Enleve une quantitÈ du panier -->
+                        <img class="icoCatalog userOnly" src="Assets/moins.png" alt="moins suppression panier">
+                        <!-- affiche le nombre prÈsent dans le panier -->
+                        <input class="icoCatalog userOnly" value="0" style="text-align: center;">  
+                        <!-- Ajouter une quantitÈ au panier -->
+                        <img class="icoCatalog userOnly" src="Assets/plus.png" alt="plus ajout panier" > 
+                        <!-- <img class="icoCatalog" src="Assets/ajouter-un-panier.png" alt="ajout au panier"> -->
+                        <img class="icoCatalog adminOnly" src="Assets/crayon.png" alt="crayon modification">
+                        <img class="icoCatalog adminOnly" src="Assets/croix.png" alt="croix suppression">
                     </div>
                 </div>
                 <div class="mainContentItem horizontalItem primaryAxisflexContent max2itemContainer max2item textLink">
@@ -137,7 +161,7 @@
                                 <p class="year">Mill&eacutesime : <span>2019</span></p>
                             </li>
                             <li>
-                                <p class="castle">Ch√¢teau : <span>Mission Haut Brian</span></p>
+                                <p class="castle">Ch‚teau : <span>Mission Haut Brian</span></p>
                             </li>
                             <li>
                                 <p class="region">R&eacutegion : <span>P&eacutessac L&eacuteogan</span></p>
@@ -153,10 +177,17 @@
                             </li>
                         </ul>
                     </div>
-                    <div class=" icoCatalogContainer" style="visibility:visible;">
+                    <div class=" icoCatalogContainer">
                         <div class="pushDiv"></div>
-                        <img class="icoCatalog" src="Assets/crayon.png" alt="crayon modification">
-                        <img class="icoCatalog" src="Assets/croix.png" alt="croix suppression">
+                        <!-- Enleve une quantitÈ du panier -->
+                        <img class="icoCatalog userOnly" src="Assets/moins.png" alt="moins suppression panier">
+                        <!-- affiche le nombre prÈsent dans le panier -->
+                        <input class="icoCatalog userOnly" value="0" style="text-align: center;">  
+                        <!-- Ajouter une quantitÈ au panier -->
+                        <img class="icoCatalog userOnly" src="Assets/plus.png" alt="plus ajout panier" > 
+                        <!-- <img class="icoCatalog" src="Assets/ajouter-un-panier.png" alt="ajout au panier"> -->
+                        <img class="icoCatalog adminOnly" src="Assets/crayon.png" alt="crayon modification">
+                        <img class="icoCatalog adminOnly" src="Assets/croix.png" alt="croix suppression">
                     </div>
                 </div>
                 <div class="mainContentItem horizontalItem primaryAxisflexContent max2itemContainer max2item textLink">
@@ -172,7 +203,7 @@
                                 <p class="year">Mill&eacutesime : <span>2019</span></p>
                             </li>
                             <li>
-                                <p class="castle">Ch√¢teau : <span>Mission Haut Brian</span></p>
+                                <p class="castle">Ch‚teau : <span>Mission Haut Brian</span></p>
                             </li>
                             <li>
                                 <p class="region">R&eacutegion : <span>P&eacutessac L&eacuteogan</span></p>
@@ -188,10 +219,17 @@
                             </li>
                         </ul>
                     </div>
-                    <div class=" icoCatalogContainer" style="visibility:visible;">
+                    <div class=" icoCatalogContainer">
                         <div class="pushDiv"></div>
-                        <img class="icoCatalog" src="Assets/crayon.png" alt="crayon modification">
-                        <img class="icoCatalog" src="Assets/croix.png" alt="croix suppression">
+                        <!-- Enleve une quantitÈ du panier -->
+                        <img class="icoCatalog userOnly" src="Assets/moins.png" alt="moins suppression panier">
+                        <!-- affiche le nombre prÈsent dans le panier -->
+                        <input class="icoCatalog userOnly" value="0" style="text-align: center;">  
+                        <!-- Ajouter une quantitÈ au panier -->
+                        <img class="icoCatalog userOnly" src="Assets/plus.png" alt="plus ajout panier" > 
+                        <!-- <img class="icoCatalog" src="Assets/ajouter-un-panier.png" alt="ajout au panier"> -->
+                        <img class="icoCatalog adminOnly" src="Assets/crayon.png" alt="crayon modification">
+                        <img class="icoCatalog adminOnly" src="Assets/croix.png" alt="croix suppression">
                     </div>
                 </div>
                 <div class="mainContentItem horizontalItem primaryAxisflexContent max2itemContainer max2item textLink">
@@ -207,7 +245,7 @@
                                 <p class="year">Mill&eacutesime : <span>2019</span></p>
                             </li>
                             <li>
-                                <p class="castle">Ch√¢teau : <span>Mission Haut Brian</span></p>
+                                <p class="castle">Ch‚teau : <span>Mission Haut Brian</span></p>
                             </li>
                             <li>
                                 <p class="region">R&eacutegion : <span>P&eacutessac L&eacuteogan</span></p>
@@ -223,10 +261,17 @@
                             </li>
                         </ul>
                     </div>
-                    <div class=" icoCatalogContainer" style="visibility:visible;">
+                    <div class=" icoCatalogContainer">
                         <div class="pushDiv"></div>
-                        <img class="icoCatalog" src="Assets/crayon.png" alt="crayon modification">
-                        <img class="icoCatalog" src="Assets/croix.png" alt="croix suppression">
+                        <!-- Enleve une quantitÈ du panier -->
+                        <img class="icoCatalog userOnly" src="Assets/moins.png" alt="moins suppression panier">
+                        <!-- affiche le nombre prÈsent dans le panier -->
+                        <input class="icoCatalog userOnly" value="0" style="text-align: center;">  
+                        <!-- Ajouter une quantitÈ au panier -->
+                        <img class="icoCatalog userOnly" src="Assets/plus.png" alt="plus ajout panier" > 
+                        <!-- <img class="icoCatalog" src="Assets/ajouter-un-panier.png" alt="ajout au panier"> -->
+                        <img class="icoCatalog adminOnly" src="Assets/crayon.png" alt="crayon modification">
+                        <img class="icoCatalog adminOnly" src="Assets/croix.png" alt="croix suppression">
                     </div>
                 </div>
 
