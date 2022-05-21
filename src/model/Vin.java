@@ -1,5 +1,13 @@
 package model;
-public class Vin {
+
+import java.io.Serializable;
+
+public class Vin implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private String nom;
 	private double volume;
 	private String chateau;
@@ -11,20 +19,45 @@ public class Vin {
 	private String urlImage;
 	
 	private int id;
-    public static int actId;
+    public static int  actId;
 	
 	
-		
+    public Vin() {
+		super();
+		actId++;
+		this.id=actId;
+		// TODO Auto-generated constructor stub
+	}
+
+
 		
 
 	public int getId() {
-		this.id=actId;
-        actId++;
+		
 		return this.id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public Vin(String nom, double volume, String chateau, String region, int annee, double prix,
+			String pourcentageAlcool, String description, String urlImage) {
+		super();
+		this.nom = nom;
+		this.volume = volume;
+		this.chateau = chateau;
+		this.region = region;
+		this.annee = annee;
+		this.prix = prix;
+		this.pourcentageAlcool = pourcentageAlcool;
+		this.description = description;
+		this.urlImage = urlImage;
+		actId++;
+		this.id=actId;
+	}
+
+
+
+
+	public void setId(int l) {
+		this.id = l;
 	}
 
 	public String getNom() {
