@@ -63,6 +63,13 @@ public class Personne {
 		return motDepasse;
 	}
 
+	public Boolean isTheGoodPassword(String pw) {
+		if (this.motDepasse == pw) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 	public void setMotDepasse(String motDepasse) {
 		this.motDepasse = motDepasse;
 	}
