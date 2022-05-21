@@ -64,14 +64,21 @@ public class Personne {
 	public String toString() {
 		return "Personne [name=" + name + ", sirname=" + sirname + ", email=" + email + ", id=" + id + "]";
 	}
-
+	public Boolean isTheGoodPassword(String pw) {
+		if (this.motDepasse == pw) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+/** pas de sécurité
 	public String getMotDepasse() {
 		return motDepasse;
 	}
-
+**/
 	public void setMotDepasse(String motDepasse) {
 		this.motDepasse = motDepasse;
 	}
-	
+
 	//fonction rechercher Bouteille
 }

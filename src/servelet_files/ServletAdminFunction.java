@@ -49,19 +49,36 @@ public class ServletAdminFunction extends HttpServlet {
 		String IPrice = request.getParameter("priceInput");
 		String IUrl = request.getParameter("urlInput");
 		String IDescription = request.getParameter("descriptionInput");
+		String IQuantity = request.getParameter("quantityInput");
 		
-		Vin vin = new Vin();
-		vin.setNom(IName);
-		vin.setAnnee(IYear);
-		vin.setChateau(ICastle);
-		vin.setRegion(IRegion);
-		vin.setPourcentageAlcool(IDegree);
-		vin.setVolume(IVolume);
-		vin.setPrix(IPrice);
-		vin.setUrlImage(IUrl);
-		vin.setDescription(IDescription);
+		//verification des types de donnees
+		try {
+			Integer IIYear = Integer.parseInt(IYear); // retourne une erreur NumberFormatException si la str n'est pas convertible
+			Integer IIVolume = Integer.parseInt(IVolume); // retourne une erreur NumberFormatException si la str n'est pas convertible
+			Double IIPrice = Double.parseDouble(IPrice); // retourne une erreur NumberFormatException si la str n'est pas convertible
+			Integer IIQuantity = Integer.parseInt(IQuantity); // retourne une erreur NumberFormatException si la str n'est pas convertible
+			
+			Vin vin = new Vin();
+			vin.setNom(IName);
+			vin.setAnnee(IIYear);
+			vin.setChateau(ICastle);
+			vin.setRegion(IRegion);
+			vin.setPourcentageAlcool(IDegree);
+			vin.setVolume(IIVolume);
+			vin.setPrix(IIPrice);
+			vin.setUrlImage(IUrl);
+			vin.setDescription(IDescription);
+			
+			Vins vins = Vins.getInstance();
+			vins.addProduct(vin, 0);;
+		} catch (Exception e) {
+			// style="color:red; visibility:visible;"
+			//le format n'est pas convertible en string
+		}
 		
-		Vins vins = Vins.getInstance();
+			
+		
+		
 		doGet(request, response);
 
 	}

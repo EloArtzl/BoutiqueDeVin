@@ -26,7 +26,14 @@ public class Annuaire {
         return instance;
     }
 	
-
+	public String getNameOfPersonne(String email) {
+		return this.personnes.get(email).getName();
+	}
+	public String getSurNameOfPersonne(String email) {
+		return this.personnes.get(email).getSirname();
+	}
+	
+	
     public void addPersonne(Personne pers) throws ErrorAdd{
     	if(this.personnes.put(pers.getEmail(), pers)!= null)  {
     		
@@ -65,8 +72,8 @@ public class Annuaire {
     	}
     	result= result + "}";
     	*/
-    	Set<Entry<Personne, Integer>> entrees = personnes.entrySet(); // Pour afficher les contenus de la map
-    	Iterator<Entry<Personne, Integer>> iter= entrees.iterator();
+    	Set<Entry<String, Personne>> entrees = personnes.entrySet(); // Pour afficher les contenus de la map
+    	Iterator<Entry<String, Personne>> iter= entrees.iterator();
     	
     	String result2="{";
     	while(iter.hasNext()) {
