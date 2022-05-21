@@ -8,13 +8,13 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 public class Annuaire {
-	private Map <String,Personne> personnes;
+	private Map <Personne,Integer> personnes;
 	
 	private static Annuaire instance=null;
 
     private Annuaire(){
    
-        personnes= new HashMap <String, Personne>();
+        personnes= new HashMap <Personne, Integer>();
 
     }
    
@@ -25,10 +25,9 @@ public class Annuaire {
         }
         return instance;
     }
-	
 
     public void addPersonne(Personne pers) throws ErrorAdd{
-    	if(this.personnes.put(pers.getEmail(), pers)!= null)  {
+    	if(this.personnes.put(pers, pers.getId())!= null)  {
     		
     		throw new ErrorAdd();
     		
@@ -44,18 +43,6 @@ public class Annuaire {
     	}
     	//this.personnes.
     }
-    
-    public boolean containsEmail(String email) {
-    	if (this.personnes.containsKey(email)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-    public boolean emailverification(String email, String password) {
-    	return this.personnes.get(email).isTheGoodPassword(password);
-	}
-    
     public String toString() {
     	 // pointeur de parcours
     	/*String result ="Catalog{";

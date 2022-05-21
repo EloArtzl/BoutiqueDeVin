@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -49,7 +50,7 @@ public class GestionVins {
     @Path("add")
 	public Response addVin(Vin v) {
 		String msg="";
-		if (vins.getLesVins().put(v.getId(), v)!=null) {
+		if (vins.getLesVins().add(v)) {
 			 msg="Le vin "+ v + "a été ajouté au catalogue :)";
 			 
 			 
@@ -63,7 +64,7 @@ public class GestionVins {
 	@Path("vins")
 	public Response getListVins() {
 		ArrayList<Vin> ret = new ArrayList<>();
-		ret.addAll(vins.getLesVins().values());
+		ret.addAll(vins.getLesVins());
 		//attention si c'est Bien les objets Vin qui sont les valeurs
 		if(ret.isEmpty()) {
 			return Response.status(500).entity(ret).build();
@@ -76,7 +77,8 @@ public class GestionVins {
 	@DELETE
     @Path("delete/{id}")
 	public Response deleteVin(@PathParam("id")Integer id) {
-		if(vins.getLesVins().remove(id, vins.getLesVins().get(id))) {
+		if(vins.findById(id)!=null) {
+			vins.getLesVins().remove(vins.findById(id));
 			return Response.status(200).build();
 			
 		};
@@ -91,8 +93,8 @@ public class GestionVins {
     @Path("vins/{id}")
    
 	public Response getVin(@PathParam("id")Integer id) {
-		if(vins.getLesVins().containsKey(id)) {
-			return Response.status(200).entity(vins.getLesVins().get(id)).build();
+		if(vins.findById(id)!=null) {
+			return Response.status(200).entity(vins.findById(id)).build();
 		}
 		String resp= "Il n'y a pas de vin avec l'id : " + id +":(";
 		return Response.status(500).entity(resp).build();
@@ -100,9 +102,9 @@ public class GestionVins {
 	
 	
 	
-	/*@GET
-	@Path("vins")
-	public Response consulterParMotCle(@QueryParam("mc") String mc) {
+	@GET
+	@Path("vinsmMotcle")
+	public Response consulterParMotCle(@DefaultValue("Guest") @QueryParam("mc") String mc) {
 		if(vins.consulterParMot(mc)!=null) {
 			return Response.status(200).entity(vins.consulterParMot(mc)).build();
 		}
@@ -110,15 +112,15 @@ public class GestionVins {
 		return Response.status(500).entity(resp).build();
 		
 	}
-	*/
+	
 	
 	@POST
 	@Path("update/{id}")
 	public Response updateVin(@PathParam("id")Integer id) {
 		String msg="";
-		if (vins.update(vins.getLesVins().get(id))!=null){
+		if (vins.update(vins.findById(id))!=null){
 			
-			msg="Le vin " + vins.update(vins.getLesVins().get(id)) + " est bien mis à jour ";
+			msg="Le vin " + vins.update(vins.findById(id)) + " est bien mis à jour ";
 			return  Response.status(200).entity(msg).build();
 		}
 		msg="Une erreur s'est produite lors de la mise à jour";
@@ -127,6 +129,8 @@ public class GestionVins {
 		//Quant on fait une mise à jour on supprime l'ancienne V
 		
 	}
+	//les fonctions pour mettre à jour les quantités des Vins: On accéde alors pas nom du Vin
+	
 	
 
 }
