@@ -1,5 +1,5 @@
-<!DOCTYPE jsp>
-<jsp lang="en">
+<!DOCTYPE html>
+<HTML lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +18,7 @@
             <div class="connectionContainer">
                 
                 <div class="accountZone">
-                    <h2>Cr&eacute;er un compte</hé>
+                    <h2>Cr&eacute;er un compte</h2>
                     <h3>Veuillez remplir les champs si dessous</h3>
                     <form method="post" action="logInPage" id="formCreateAccount" class="" name="accountForm">
                     	<div id="somethingIsMissing" class="verticalItem" style="color:red; visibility:hidden;">Les champs marqu&eacute;s par <span style="color:red;font-size:12px;">*</span> sont obligatoires</div>
@@ -53,13 +53,14 @@
                     <form action="" id="formLogIn" class="" name="connectForm">
                         <div class="itemInput verticalItem">                    	
                         	
-                        	<div id="wrongID" class="verticalItem" style="color:red;">Nom d'utilisateur erron&eacute;, veuillez cr&eacute;er un compte avant de vous connecter</div>
+                        	<div id="wrongID" class="verticalItem" style="color:red; visibility:hidden;">Nom d'utilisateur erron&eacute;, veuillez cr&eacute;er un compte avant de vous connecter</div>
                             <label for="emailUserConnect">Login (email) : </label>
+                            ${form.erreurs['emailUserConnect']}
                             <input name="emailUserConnect" id="emailUserConnect" type="text"><br>
                         </div>
                         <div class="itemInput verticalItem">
-                        	<div id="wrongPassword" class="verticalItem" style="color:red;">Mot de passe erron&eacute;, veuillez r&eacute;essayer</div>
-                            
+                        	<div id="wrongPassword" class="verticalItem" style="color:red; visibility:hidden;">Mot de passe erron&eacute;, veuillez r&eacute;essayer</div>
+                            ${form.erreurs['passwordUserConnect']}
                             <label for="passwordUserConnect">Mot de passe : </label>
                             <input name="passwordUserConnect" id="passwordUserConnect" type="password"><br>
                         </div>
@@ -68,8 +69,8 @@
                 </div>
                 <div class="introConnect">
                     <h3>Connexion en tant qu'administrateur</h3>
-                    <p>Un administrateur a la possibilit&eacute de rajouter, de modifier et de supprimer les produits pr&eacutesents dans le catalogue</p>
-                    <p>Pour vous connecter en tant qu'administrateur, veuillez vous r&eacutef&eacuterer à la notice utilisateur</p>
+                    <p>Un administrateur a la possibilit&eacute; de rajouter, de modifier et de supprimer les produits pr&eacute;sents dans le catalogue</p>
+                    <p>Pour vous connecter en tant qu'administrateur, veuillez vous r&eacute;f&eacute;rer a la notice utilisateur</p>
                 </div>
             </div>
             
@@ -78,4 +79,4 @@
     </div><!-- fin de l'axe principal : ordonn&eacutee -->
 
 </body>
-</jsp>
+</html>

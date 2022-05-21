@@ -52,6 +52,10 @@
                                 <!-- <label for="regionInput">R&eacute;gion : </label> -->
                                 <input name="regionInput" class="verticalItem"  id="regionInput" type="text" placeholder="R&eacute;gion"><br>
                             </div>
+                            <div class="itemInput ">
+                                <!-- <label for=""</label> -->
+                                <input name="quantityInput" class="verticalItem"  id="quantityInput" type="text" placeholder="Quantit&eacute; en stock"><br>
+                            </div>
                         </div>
                         <div class="horizontalItem max2item secondaryAxisFlexContent">
                             <div class="itemInput ">
