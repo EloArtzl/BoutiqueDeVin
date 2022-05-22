@@ -152,6 +152,7 @@ public class ServeletLogin extends HttpServlet {
 	        //RequestDispatcher rq = request.getRequestDispatcher("catalogPage.jsp");
 	        //rq.forward(request, response);
 	        System.out.println("Session : ATT_SESSION_USER = " + session.getAttribute(ATT_SESSION_USER) );
+
 	        	
 			/**
 			

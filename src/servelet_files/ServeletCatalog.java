@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import model.Vin;
 import model.Vins;
 
 /**
@@ -32,10 +32,21 @@ public class ServeletCatalog extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		Vins vins=Vins.getInstance();
-		vins.initialise();
-		request.setAttribute("vins", vins.getLesVins());
-		this.getServletContext().getRequestDispatcher("/WEB-INF/catalogPage.jsp").forward(request, response);
 		
+		request.setAttribute("vins", vins.getLesVins());
+		
+		String id=request.getParameter("suppr");
+		System.out.println("le ID est : " +id);
+		if(id!=null) {
+			 System.out.println("le ID est : " +id);
+			 Vin v= vins.findById(Integer.parseInt(id));
+			 vins.getLesVins().remove(v);
+			  vins.getQuantities().remove(v.getId());
+			  //this.getServletContext().getRequestDispatcher("/WEB-INF/catalogPage.jsp").forward(request, response);
+		}
+		
+		this.getServletContext().getRequestDispatcher("/WEB-INF/catalogPage.jsp").forward(request, response);
+
 	}
 
 	/**

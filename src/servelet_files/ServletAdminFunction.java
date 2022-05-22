@@ -41,6 +41,16 @@ public class ServletAdminFunction extends HttpServlet {
 		request.setAttribute("form", form);
 		//System.out.println(erreurs.toString());
 		this.getServletContext().getRequestDispatcher("/WEB-INF/adminFonctionnality.jsp").forward(request, response);
+		
+		String idToChange =request.getParameter("change");
+		System.out.println("le idToChange est : " + idToChange);
+		if (idToChange != null) {
+			Vins vins=Vins.getInstance();
+			
+			// onn est arrive sur la page par l'image crayon
+			Vin v= vins.findById(Integer.parseInt(idToChange));
+			request.setAttribute("idToChange", idToChange);
+		}
 	}
 
 	/**
