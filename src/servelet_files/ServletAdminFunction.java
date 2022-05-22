@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import model.Annuaire;
 import model.ErrorAdd;
 import model.Personne;
+import model.Vin;
+import model.Vins;
 
 /**
  * Servlet implementation class ServletAdminFunction
@@ -40,23 +42,42 @@ public class ServletAdminFunction extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String IName = request.getParameter("nameInput");
 		String IYear = request.getParameter("yearInput");
-		String UEmail = request.getParameter("userEmail");
-		String UPassword = request.getParameter("password");
-		String UPass = request.getParameter("secondPassword");
+		String ICastle = request.getParameter("castleInput");
+		String IRegion = request.getParameter("regionInput");
+		String IDegree = request.getParameter("degreeInput");
+		String IVolume = request.getParameter("volumeInput");
+		String IPrice = request.getParameter("priceInput");
+		String IUrl = request.getParameter("urlInput");
+		String IDescription = request.getParameter("descriptionInput");
+		String IQuantity = request.getParameter("quantityInput");
 		
-		Personne user = new Personne();
-		user.setName(UName);
-		user.setSirname(USurName);
-		user.setEmail(castleInput);
-		user.setMotDepasse(UPassword);
-		
-		Annuaire annuaire = Annuaire.getInstance();
+		//verification des types de donnees
 		try {
-			annuaire.addPersonne(user);
-		} catch (ErrorAdd e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Integer IIYear = Integer.parseInt(IYear); // retourne une erreur NumberFormatException si la str n'est pas convertible
+			Integer IIVolume = Integer.parseInt(IVolume); // retourne une erreur NumberFormatException si la str n'est pas convertible
+			Double IIPrice = Double.parseDouble(IPrice); // retourne une erreur NumberFormatException si la str n'est pas convertible
+			Integer IIQuantity = Integer.parseInt(IQuantity); // retourne une erreur NumberFormatException si la str n'est pas convertible
+			
+			Vin vin = new Vin();
+			vin.setNom(IName);
+			vin.setAnnee(IIYear);
+			vin.setChateau(ICastle);
+			vin.setRegion(IRegion);
+			vin.setPourcentageAlcool(IDegree);
+			vin.setVolume(IIVolume);
+			vin.setPrix(IIPrice);
+			vin.setUrlImage(IUrl);
+			vin.setDescription(IDescription);
+			
+			Vins vins = Vins.getInstance();
+			vins.addProduct(vin, 0);;
+		} catch (Exception e) {
+			// style="color:red; visibility:visible;"
+			//le format n'est pas convertible en string
 		}
+		
+			
+		
 		
 		doGet(request, response);
 
