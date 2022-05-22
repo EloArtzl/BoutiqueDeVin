@@ -2,7 +2,6 @@ package service;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
@@ -32,7 +31,7 @@ public class GestionVins {
 	
 	public GestionVins() {
 		
-		vins = new Vins();
+		vins = Vins.getInstance();
 		vins.initialise();// à enlever aprés c'est juste pour tester
 		if ( INSTANCE == null) {
 			INSTANCE = this;
@@ -79,14 +78,12 @@ public class GestionVins {
 	public Response deleteVin(@PathParam("id")Integer id) {
 		if(vins.findById(id)!=null) {
 			vins.getLesVins().remove(vins.findById(id));
+			vins.getQuantities().remove(id);
 			return Response.status(200).build();
 			
 		};
 		String resp= "Ce vin n'existe pas :(";
 		return Response.status(500).entity(resp).build();
-		
-		
-		
 		
 	}
 	@GET
@@ -129,8 +126,77 @@ public class GestionVins {
 		//Quant on fait une mise à jour on supprime l'ancienne V
 		
 	}
-	//les fonctions pour mettre à jour les quantités des Vins: On accéde alors pas nom du Vin
+	//les fonctions pour mettre à jour les quantités des Vins et les vins en même temps
+	/*@POST
+    @Path("VinAndQuantite")
+	public Response addVinAndQuantity(Vin v, Integer quantity) {
+		String msg="";
+		if (vins.getLesVins().add(v) &&  vins.getQuantities().putIfAbsent(v.getId(),quantity)!=0) {
+			 msg="Le vin "+ v + "a été ajouté au catalogue :)";
+			 
+			 
+			return Response.status(200).entity(msg).build();
+		}
+		msg="L'ajout n'a pas réussi :(";
+		return Response.status(500).entity(msg).build();
+	}
+	*/
+	@GET
+	@Path("listeVinsAndQuantity")
+	public Response getListVinsQuant() {
+		String ret= vins.toString();
+		
+		if(ret.isEmpty()) {
+			return Response.status(500).entity(ret).build();
+			
+		}
+		
+		
+		return Response.ok(ret).build();
+	}
+/**********************************************************/
 	
 	
-
+	@GET
+    @Path("vinsAndQuantity/{id}")
+   
+	public Response getVinAndQuatitt(@PathParam("id")Integer id) {
+		if(vins.findById(id)!=null) {
+			 ;
+			
+					String resp= vins.findById(id).toString()+ " /Quantity :"  +vins.getQuantities().get(id);
+			return Response.status(200).entity(resp).build();
+		}
+		String resp= "Il n'y a pas de vin avec l'id : " + id +":(";
+		return Response.status(500).entity(resp).build();
+	}
+	/*********************************************************************************/
+	@GET
+	@Path("vinsmMotcleAndQuantit")
+	public Response consulterVinQuaParMotCle(@DefaultValue("Vin") @QueryParam("mc") String mc) {
+		if(vins.consulterParMot(mc)!=null) {
+			
+			
+			String msg= vins.consulterParMot(mc) + "/quantity : " +vins.getQuantities().get(vins.consulterParMot(mc).getId());
+			
+			return Response.status(200).entity(msg).build();
+		}
+		String resp= "Il n'y a pas de vin : " + mc+"  :(";
+		return Response.status(500).entity(resp).build();
+		
+	}
+	/**************************************************************************/
+	
+	@GET
+	@Path("ListeVinsParMotCle")
+	public Response getListeVinParMotCle(@DefaultValue("Vin") @QueryParam("mc") String mc) {
+		if(vins.ListerParMot(mc)!=null) {
+			return Response.status(200).entity(vins.ListerParMot(mc)).build();
+			
+		}
+		String resp= "Il n'y a pas de vin : " + mc+"  :(";
+		return Response.status(500).entity(resp).build();
+		
+	}
+	
 }
