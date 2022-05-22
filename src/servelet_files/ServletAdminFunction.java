@@ -1,12 +1,16 @@
 package servelet_files;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.AddForm;
 import model.Annuaire;
 import model.ErrorAdd;
 import model.Personne;
@@ -32,7 +36,10 @@ public class ServletAdminFunction extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		System.out.println("on est dans le do get");
+		AddForm form  =  (AddForm) request.getAttribute("form");
+		request.setAttribute("form", form);
+		//System.out.println(erreurs.toString());
 		this.getServletContext().getRequestDispatcher("/WEB-INF/adminFonctionnality.jsp").forward(request, response);
 	}
 
@@ -40,51 +47,27 @@ public class ServletAdminFunction extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String IName = request.getParameter("nameInput");
-		String IYear = request.getParameter("yearInput");
-		String ICastle = request.getParameter("castleInput");
-		String IRegion = request.getParameter("regionInput");
-		String IDegree = request.getParameter("degreeInput");
-		String IVolume = request.getParameter("volumeInput");
-		String IPrice = request.getParameter("priceInput");
-		String IUrl = request.getParameter("urlInput");
-		String IDescription = request.getParameter("descriptionInput");
-		String IQuantity = request.getParameter("quantityInput");
-		
-		if (request.getParameter("caseAdd")!=null) {
-			
-		
-			//verification des types de donnees
-			//try {
-				Integer IIYear = Integer.parseInt(IYear); // retourne une erreur NumberFormatException si la str n'est pas convertible
-				Integer IIVolume = Integer.parseInt(IVolume); // retourne une erreur NumberFormatException si la str n'est pas convertible
-				Double IIPrice = Double.parseDouble(IPrice); // retourne une erreur NumberFormatException si la str n'est pas convertible
-				Integer IIQuantity = Integer.parseInt(IQuantity); // retourne une erreur NumberFormatException si la str n'est pas convertible
+		AddForm form = new AddForm();
+		form.verifChamp(request);
+		Map<String, String> erreurs = form.getErreurs();
 				
-				Vin vin = new Vin();
-				vin.setNom(IName);
-				vin.setAnnee(IIYear);
-				vin.setChateau(ICastle);
-				vin.setRegion(IRegion);
-				vin.setPourcentageAlcool(IDegree);
-				vin.setVolume(IIVolume);
-				vin.setPrix(IIPrice);
-				vin.setUrlImage(IUrl);
-				vin.setDescription(IDescription);
 				
-				Vins vins = Vins.getInstance();
-				try {
-					vins.addProduct(vin, IIQuantity);
-				} catch (ErrorAdd e) {
-					// TODO Auto-generated catch block
-					System.out.println(vin.toString());
-					System.out.println("l'exception est levee");
+			if (erreurs.isEmpty()) {
+				System.out.println("il n'y a pas d'erreurs");
 
-					e.printStackTrace();
-				}
-				System.out.println(vin.toString());
+				form.addVinToCatalog();
+				
+				this.getServletContext().getRequestDispatcher("/WEB-INF/adminFonctionnality.jsp").forward(request, response);
 
-				System.out.println(vins.toString());
+			}else {
+				System.out.println("il y a une erreurs");
+				request.setAttribute("form", form);
+				this.getServletContext().getRequestDispatcher("/WEB-INF/adminFonctionnality.jsp").forward(request, response);
+
+				//doGet(request, response);
+			}
+				
+				
 //			} catch (Exception e) {
 //				System.out.println(vin.toString());
 //				System.out.println("l'exception est levee");
@@ -95,8 +78,6 @@ public class ServletAdminFunction extends HttpServlet {
 		}	
 		
 		
-		doGet(request, response);
+		//doGet(request, response);
 
 	}
-
-}
