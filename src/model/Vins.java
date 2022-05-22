@@ -1,15 +1,17 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
 
-public class Vins implements Serializable{
+public class Vins implements VinsInterface, Serializable{
 	/**
 	 * 
 	 */
@@ -56,10 +58,22 @@ public class Vins implements Serializable{
 	        return instance;
 	    }
    public void initialise() {
-	   Vin v = new Vin("Vin rosée", 1,  "Chateau de la paix","Gironde", 2018, 198," 20%",  "Description vin", "image1.jpeg");
+	   Vin v = new Vin("Vin rosée", 1,  "Chateau de la paix","Gironde", 2018, 198," 20",  "Description vin", "image1.jpeg");
+	   Vin v1 = new Vin("Pessac Leognan", 1,  "Pessac Leognan","Gironde", 2000, 15," 33", "Robe rouge vermillon moyennement intense. Nez fin et élégant s'ouvrant sur la framboise fraîche, et évoluant sur des notes de cassis et thym. Bouche fraîche et équilibrée, marquée par des tanins jeunes présents en fin de bouche.",
+			   "image1.jpeg");
+	   Vin v2= new Vin("CHATEAU TURCAUD - BORDEAUX 2018", 1,  "Chateau de la paix","Gironde", 2018, 198," 20",  "D'une belle couleur rouge grenat, le vin s'ouvre sur un nez aux notes de fruits noirs concentrés, d'épices et de poivre frais. L'attaque en bouche est franche, fraîche et avec une belle acidité qui pousse le fruit noir de baies (mures) avec une impression variétale florale. Le milieu de bouche est bien équilibré aux tannins fondus, peu extraits mais présents, apportant rondeur et persistance jusqu'à la finale, droite et nette. Un vin gourmand, souple et sensuel!", "image1.jpeg");
+	   
+	   
 	   this.quantities.put(v.getId(), 12);
 	   this.lesVins.add(v);
+	   this.quantities.put(v1.getId(), 13);
+	   this.lesVins.add(v1);
+	   this.lesVins.add(v2);
+	   this.quantities.putIfAbsent(v2.getId(), 100);
+	   
+	   
    }
+   
    public Vin update(Vin v) {
 	   lesVins.add(v);
 	   return v;
@@ -96,6 +110,38 @@ public class Vins implements Serializable{
 	    }
 	}
 	return null;
+	
+	
+}
+   //Renvoie une liste de Vins correspondant au mot spécifié
+   //LISTERPARMOT
+   //On fait une recherche par mot clé et ensuite on rempli la liste , avec les vins qui ont le même mot clé
+   
+ public List<Vin> ListerParMot(String mc) {
+	 ArrayList<Vin> ret = new ArrayList<>();
+	   
+	Iterator<Vin> it= lesVins.iterator();
+	while(it.hasNext()) { 
+		Vin v= it.next();
+		Vin res=new Vin();
+		//On cherche dans la description du Vin si il existe pas le mot spécifié
+	    if(v.getDescription().contains(mc)) {
+	    	
+	    	res.setAnnee(v.getAnnee());
+	    	res.setChateau(v.getChateau());
+	    	res.setDescription(v.getDescription());
+	    	res.setId(v.getId());
+	    	res.setNom(v.getNom());
+	    	res.setPourcentageAlcool(v.getPourcentageAlcool());
+	    	res.setPrix(v.getPrix());
+	    	res.setRegion(v.getRegion());
+	    	res.setUrlImage(v.getUrlImage());
+	    	res.setVolume(v.getVolume());
+	    	
+	    	ret.add(res);
+	    }
+	}
+	return ret;
 	
 	
 }
