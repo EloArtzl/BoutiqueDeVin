@@ -61,7 +61,7 @@ public class ServletAdminFunction extends HttpServlet {
 
 			}else {
 				System.out.println("il y a une erreurs");
-				request.setAttribute("form", form);
+				request.setAttribute("form", erreurs);
 				this.getServletContext().getRequestDispatcher("/WEB-INF/adminFonctionnality.jsp").forward(request, response);
 
 				//doGet(request, response);

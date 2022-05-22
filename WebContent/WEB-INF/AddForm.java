@@ -6,25 +6,24 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 public class AddForm {
-	private Integer IIYear;
-	private Integer IIVolume ;
-	private Double IIPrice ;
-	private Integer IIQuantity ;
-	private String IName ;
-	private String IYear;
-	private String ICastle;
-	private String IRegion;
-	private String IDegree;
-	private String IVolume;
-	private String IPrice;
-	private String IUrl;
-	private String IDescription;
-	private String IQuantity;
-	private Map<String, String> erreurs;
+	Integer IIYear = null;
+	Integer IIVolume = null;
+	Double IIPrice = null;
+	Integer IIQuantity = null;
+	String IName ;
+	String IYear;
+	String ICastle;
+	String IRegion;
+	String IDegree;
+	String IVolume;
+	String IPrice;
+	String IUrl;
+	String IDescription;
+	String IQuantity;
+	Map<String, String> erreurs = new HashMap<String, String>();
 
 	public AddForm() {
 		super();
-    	erreurs = new HashMap<String, String>();
 		// TODO Auto-generated constructor stub
 	}
 	public void verifChamp(HttpServletRequest request) {
