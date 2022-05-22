@@ -39,6 +39,12 @@ public class ServeletLogin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("on est dans le doget");
+        HttpSession session = request.getSession();
+        System.out.println("Session : ATT_SESSION_USER = " + session.getAttribute(ATT_SESSION_USER) );
+
+        request.setAttribute("utilisateur", session.getAttribute("sessionUtilisateur"));
+
 		this.getServletContext().getRequestDispatcher("/WEB-INF/logInPage.jsp").forward(request, response);
 	}
 
@@ -46,12 +52,22 @@ public class ServeletLogin extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("on est dans le dopost");
+		//System.out.println(request.getParameter("accountForm"));
+		System.out.println("compte :" + request.getParameter("inputAccountButton")!=null);
+		System.out.println("connnexion : " + request.getParameter("inputConnectButton")!=null);
 		
+		if (request.getParameter("inputAccountButton")!=null) {	//formulaire de creation de compte
+
+			System.out.println("creer un compte");
+
 		
-		
-		
-		if (request.getParameter("accountForm")!= null) {
-			//formulaire de creation de compte
+		//if (request.getParameter("accountForm")!= null) {
+			System.out.println(request.getParameter("accountForm"));
+			System.out.println(request.getParameter("inputAccountButton"));
+
+			
+
 			
 			String UName = request.getParameter("userName");
 			String USurName = request.getParameter("userSurName");
@@ -60,15 +76,22 @@ public class ServeletLogin extends HttpServlet {
 			String UPass = request.getParameter("secondPassword");
 			
 			
-			if (UName == "" || USurName == "" || UEmail =="" || UPassword == "" || UPass == ""	) {
+			if (UName == null || USurName == null || UEmail == null || UPassword == null || UPass == null	|| UName == "" || USurName == "" || UEmail == "" || UPassword == "" || UPass == "") {
 				System.out.println("un champ est manquant");
 				//afficher la div avec l'id : somethingIsMissing
+				this.getServletContext().getRequestDispatcher("/WEB-INF/logInPage.jsp").forward( request, response );
 				return;
-			}else if (UPass != UPassword) {
+			}else if (!UPass.equals(UPassword) ) {//!= UPassword
 				
+				System.out.println("les password sont differents " + UPass+ " " + UPassword);
+
 				// afficher la div avec l'id : notSamePassword
+				this.getServletContext().getRequestDispatcher("/WEB-INF/logInPage.jsp").forward( request, response );
 				return;
 			}else {
+				System.out.println(UName+USurName+UEmail+UPassword+UPass);
+				System.out.println("debut de création de la personne");
+
 				Personne user = new Personne();
 				user.setName(UName);
 				user.setSirname(USurName);
@@ -88,11 +111,15 @@ public class ServeletLogin extends HttpServlet {
 			
 				this.getServletContext().getRequestDispatcher("/WEB-INF/logInPage.jsp").forward( request, response );
 			} 
-		}else if (request.getParameter("connectForm") != null) {
+		}else if (request.getParameter("inputConnectButton")!=null) {
+			System.out.println(request.getParameter("connectForm"));
+			System.out.println("partie connexion");
+
 			//formulaire de connexion
 			/* Préparation de l'objet formulaire */
 	        ConnexionForm form = new ConnexionForm();
-	
+	        System.out.println(form.getErreurs().toString());
+            
 	        /* Traitement de la requête et récupération du bean en résultant */
 	        Personne utilisateur = form.connecterUtilisateur( request );
 	
@@ -105,9 +132,16 @@ public class ServeletLogin extends HttpServlet {
 	         */
 			
 	        if ( form.getErreurs().isEmpty() ) {
-	            session.setAttribute( ATT_SESSION_USER, utilisateur );
+	        	System.out.println("succes");
+	            session.setAttribute( "sessionUtilisateur", utilisateur );
+	            request.setAttribute("utilisateur", session.getAttribute("sessionUtilisateur"));
+	            this.getServletContext().getRequestDispatcher("/WEB-INF/catalogPage.jsp").forward( request, response );
+				
 	        } else {
+	        	System.out.println(form.getErreurs().toString());
 	            session.setAttribute( ATT_SESSION_USER, null );
+	            request.setAttribute("form", form);
+	            this.getServletContext().getRequestDispatcher("/WEB-INF/logInPage.jsp").forward( request, response );
 	        }
 	
 	        /* Stockage du formulaire et du bean dans l'objet request */
@@ -115,11 +149,10 @@ public class ServeletLogin extends HttpServlet {
 	        request.setAttribute( ATT_USER, utilisateur );
 	
 	        //this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
-	        RequestDispatcher rq = request.getRequestDispatcher("catalogPage.jsp");
-	        rq.forward(request, response);
-	        //this.getServletContext().getRequestDispatcher("/WEB-INF/catalogPage.jsp").forward( request, response );
-				
-			
+	        //RequestDispatcher rq = request.getRequestDispatcher("catalogPage.jsp");
+	        //rq.forward(request, response);
+	        System.out.println("Session : ATT_SESSION_USER = " + session.getAttribute(ATT_SESSION_USER) );
+	        	
 			/**
 			
 			String CEmail = request.getParameter("emailUserConnect");
@@ -146,6 +179,9 @@ public class ServeletLogin extends HttpServlet {
 			
 			
 			
+		}else {
+			System.out.println(request.getParameter("inputAccountButton"));
+			System.out.println("2eme: " + request.getParameter("inputConnectButton"));
 		}
 		
 		
