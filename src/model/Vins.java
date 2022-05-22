@@ -235,7 +235,7 @@ public class Vins implements VinsInterface, Serializable{
    	
    }
    // to print the catalog
-       public String toString() {
+    public String toString() {
    	Iterator<Vin> it= lesVins.iterator(); // pointeur de parcours
    	
    	Set<Entry<Integer, Integer>> entrees = quantities.entrySet(); // Pour afficher les contenus de la map
@@ -250,7 +250,7 @@ public class Vins implements VinsInterface, Serializable{
    		int k = (int)cle; // je fait un cast 
    		int v= (int)valeur;
    		Vin p=it.next(); 
-   		result2= result2 + "["+p+ "(" +k+" ," +v + ")" + "]";
+   		result2= result2 + "["+p.toString()+ "(" +k+" ," +v + ")" + "]";
    	}
    	result2+="}";
    	return result2;

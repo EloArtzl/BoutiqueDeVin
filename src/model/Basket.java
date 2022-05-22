@@ -15,10 +15,10 @@ public class Basket {
     //private int comProducts[];
 	private Map <Integer,Integer> comProducts;
     private Personne basketOwner;
-    private Catalog catalog;
+    private Vins vins;
 
-   public  Basket(Personne p,Catalog c2) throws BadNameException {
-        this.catalog = c2;
+   public  Basket(Personne p,Vins c2) throws BadNameException {
+        this.vins = c2;
        
         this.comProducts = new HashMap<Integer,Integer>();
         Personne p1= new Personne();
@@ -37,7 +37,7 @@ public class Basket {
    // and if it is not possible to add the product an error will be shown
    public void inc(int _id, int quantity) throws QuantityException, IdException {
 	   try {
-		   boolean is_possible= this.catalog.is_disponible(_id,quantity);// là il fait les calculs pour voir si le produit est bien disponible.
+		   boolean is_possible= this.vins.is_disponible(_id,quantity);// là il fait les calculs pour voir si le produit est bien disponible.
 		   if(is_possible)
 			   this.comProducts.put(_id,quantity);
 		   
@@ -63,7 +63,7 @@ public class Basket {
 		   v= v-quantity;
 		   
 		   this.comProducts.replace(_id, v);// replace the product in the basket with the right quantity
-		   this.catalog.replaceProduct(_id, quantity);// add the removed product in the catalog
+		   this.vins.replaceProductQuantity(_id, quantity);// add the removed product in the catalog
 		   
 		   
 	   }
@@ -83,7 +83,7 @@ public class Basket {
    		Object valeur=entree.getValue();
    		int k = (int)cle;
    		int v= (int)valeur;
-   		String product= this.catalog.afficheById(k);
+   		String product= this.vins.afficheById(k);
    		result2= result2 +"(" +product+" ," +v + ")";
    	}
    	result2+="}";

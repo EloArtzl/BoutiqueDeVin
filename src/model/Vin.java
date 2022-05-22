@@ -9,7 +9,15 @@ public class Vin implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String nom;
-	private int volume;
+	@Override
+	public String toString() {
+		return "Vin [nom=" + nom + ", volume=" + volume + ", chateau=" + chateau + ", region=" + region + ", annee="
+				+ annee + ", prix=" + prix + ", pourcentageAlcool=" + pourcentageAlcool + ", description=" + description
+				+ ", urlImage=" + urlImage + ", id=" + id + "]";
+	}
+
+
+	private double volume;
 	private String chateau;
 	private String region;
 	private int annee;
@@ -37,7 +45,7 @@ public class Vin implements Serializable{
 		return this.id;
 	}
 
-	public Vin(String nom, int volume, String chateau, String region, int annee, double prix,
+	public Vin(String nom, double volume, String chateau, String region, int annee, double prix,
 			String pourcentageAlcool, String description, String urlImage) {
 		super();
 		this.nom = nom;
@@ -72,7 +80,7 @@ public class Vin implements Serializable{
 		return volume;
 	}
 
-	public void setVolume(int volume) {
+	public void setVolume(double volume) {
 		this.volume = volume;
 	}
 
@@ -174,5 +182,3 @@ public class Vin implements Serializable{
 	
 	
 }
-
-
