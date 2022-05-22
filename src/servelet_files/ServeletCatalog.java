@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+import model.Vins;
+
 /**
  * Servlet implementation class ServeletCatalog
  */
@@ -28,6 +31,9 @@ public class ServeletCatalog extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		Vins vins=Vins.getInstance();
+		vins.initialise();
+		request.setAttribute("vins", vins.getLesVins());
 		this.getServletContext().getRequestDispatcher("/WEB-INF/catalogPage.jsp").forward(request, response);
 		
 	}
@@ -36,8 +42,20 @@ public class ServeletCatalog extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	// request.getParameter("id");
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+           String mot=request.getParameter("nom");
+           System.out.println("le mot es : " +mot);
+		
+		   Vins vins=Vins.getInstance();
+		   //response.getWriter().append(mot).append(request.getContextPath());
+		
+		   request.setAttribute("vins",  vins.ListerParMot(mot.toLowerCase()));
+		   this.getServletContext().getRequestDispatcher("/WEB-INF/SearchCatalogue.jsp").forward(request, response);
+		
+		
+		//doGet(request, response);
 	}
 
 }

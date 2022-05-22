@@ -80,8 +80,8 @@
                             <textarea class="inputArea verticalItem" name="descriptionInput" id="descriptionInput" placeholder="Description" cols="18" rows="10"></textarea>
                         </div>
                         <div id="connectButton" class="verticalItem" >
-                            <input class="caseAdd" type="button" value="Ajouter">
-                            <input class="caseChange" type="button" value="Modifier">
+                            <input name="caseAdd" type="submit" value="Ajouter">
+                            <input name="caseChange" type="submit" value="Modifier">
 
                         </div>
                     </form>

@@ -51,32 +51,48 @@ public class ServletAdminFunction extends HttpServlet {
 		String IDescription = request.getParameter("descriptionInput");
 		String IQuantity = request.getParameter("quantityInput");
 		
-		//verification des types de donnees
-		try {
-			Integer IIYear = Integer.parseInt(IYear); // retourne une erreur NumberFormatException si la str n'est pas convertible
-			Integer IIVolume = Integer.parseInt(IVolume); // retourne une erreur NumberFormatException si la str n'est pas convertible
-			Double IIPrice = Double.parseDouble(IPrice); // retourne une erreur NumberFormatException si la str n'est pas convertible
-			Integer IIQuantity = Integer.parseInt(IQuantity); // retourne une erreur NumberFormatException si la str n'est pas convertible
+		if (request.getParameter("caseAdd")!=null) {
 			
-			Vin vin = new Vin();
-			vin.setNom(IName);
-			vin.setAnnee(IIYear);
-			vin.setChateau(ICastle);
-			vin.setRegion(IRegion);
-			vin.setPourcentageAlcool(IDegree);
-			vin.setVolume(IIVolume);
-			vin.setPrix(IIPrice);
-			vin.setUrlImage(IUrl);
-			vin.setDescription(IDescription);
-			
-			Vins vins = Vins.getInstance();
-			vins.addProduct(vin, 0);;
-		} catch (Exception e) {
-			// style="color:red; visibility:visible;"
-			//le format n'est pas convertible en string
-		}
 		
-			
+			//verification des types de donnees
+			//try {
+				Integer IIYear = Integer.parseInt(IYear); // retourne une erreur NumberFormatException si la str n'est pas convertible
+				Integer IIVolume = Integer.parseInt(IVolume); // retourne une erreur NumberFormatException si la str n'est pas convertible
+				Double IIPrice = Double.parseDouble(IPrice); // retourne une erreur NumberFormatException si la str n'est pas convertible
+				Integer IIQuantity = Integer.parseInt(IQuantity); // retourne une erreur NumberFormatException si la str n'est pas convertible
+				
+				Vin vin = new Vin();
+				vin.setNom(IName);
+				vin.setAnnee(IIYear);
+				vin.setChateau(ICastle);
+				vin.setRegion(IRegion);
+				vin.setPourcentageAlcool(IDegree);
+				vin.setVolume(IIVolume);
+				vin.setPrix(IIPrice);
+				vin.setUrlImage(IUrl);
+				vin.setDescription(IDescription);
+				
+				Vins vins = Vins.getInstance();
+				try {
+					vins.addProduct(vin, IIQuantity);
+				} catch (ErrorAdd e) {
+					// TODO Auto-generated catch block
+					System.out.println(vin.toString());
+					System.out.println("l'exception est levee");
+
+					e.printStackTrace();
+				}
+				System.out.println(vin.toString());
+
+				System.out.println(vins.toString());
+//			} catch (Exception e) {
+//				System.out.println(vin.toString());
+//				System.out.println("l'exception est levee");
+//				// style="color:red; visibility:visible;"
+//				//le format n'est pas convertible en string
+//			}
+		
+		}	
 		
 		
 		doGet(request, response);
