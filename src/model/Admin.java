@@ -11,15 +11,19 @@ public class Admin extends Personne{
 	
 	public static Admin getInstance() throws ErrorAdd{
         if(instance==null){
+            instance = new Admin();
+            instance.setName("Admin");
+    		instance.setEmail("Admin@gmail.com");
+    		instance.setMotDepasse(mot_de_passe);
+//            Personne p= new Personne();
+//            p.setName("Admin");
+//            p.setEmail("Admin@gmail.com");
+//            p.setMotDepasse(mot_de_passe);
+//            
+//            instance= (Admin) p;
             
-            Personne p= new Personne();
-            p.setName("Admin");
-            p.setEmail("Admin@gmail.com");
-            p.setMotDepasse(mot_de_passe);
-            
-            instance= (Admin) p;
-            
-            Annuaire.getInstance().addPersonne(p);
+            Annuaire.getInstance().addPersonne(instance);
+            Annuaire.getInstance().toString();
         }
         return instance;
     }

@@ -12,7 +12,11 @@
     
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 	<%@ page import="model.Personne" %></head>
+	<%@ page import="model.Vin" %></head>
+	
 	<jsp:useBean id="utilisateur" class="model.Personne" scope="request"></jsp:useBean>
+	<jsp:useBean id="vinToChange" class="model.Vin" scope="request"></jsp:useBean>
+	
 	<jsp:useBean id="form" class="model.ConnexionForm" scope="request"></jsp:useBean>
 	
 <body>

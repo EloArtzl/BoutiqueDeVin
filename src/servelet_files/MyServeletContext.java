@@ -35,11 +35,12 @@ public class MyServeletContext implements ServletContextListener {
 		// TODO Auto-generated method stub
 		ServletContextListener.super.contextInitialized(sce);
 		LOG.log(Level.INFO,"**********Boutique de VIN APP started***********");
-//		try {
-//			Admin.getInstance();
-//		} catch (ErrorAdd e) {
-//			e.printStackTrace();
-//		}
+		try {
+			Admin.getInstance();
+		} catch (ErrorAdd e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	public static void main() {

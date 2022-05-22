@@ -10,8 +10,12 @@
     <link rel="stylesheet" href="css/catalogStyle.css">
     <title>Document</title>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="model.Vins" %>
-<jsp:useBean id="vins" class="java.util.HashSet" scope="request"></jsp:useBean>
+	<%@ page import="model.Vins" %>
+	<%@ page import="model.Personne" %></head>
+	<jsp:useBean id="utilisateur" class="model.Personne" scope="request"></jsp:useBean>
+	
+	<jsp:useBean id="vins" class="java.util.HashSet" scope="request"></jsp:useBean>
+
 </head>
 <body>
     <div class="secondaryAxisFlexContent">
@@ -71,6 +75,7 @@
                     </div>
                     <div class=" icoCatalogContainer">
                         <div class="pushDiv"></div>
+           
                         <!-- Enleve une quantit� du panier -->
                         <img class="icoCatalog userOnly" src="Assets/moins.png" alt="moins suppression panier">
                         <!-- affiche le nombre pr�sent dans le panier -->
@@ -78,8 +83,21 @@
                         <!-- Ajouter une quantit� au panier -->
                         <img class="icoCatalog userOnly" src="Assets/plus.png" alt="plus ajout panier" > 
                         <!-- <img class="icoCatalog" src="Assets/ajouter-un-panier.png" alt="ajout au panier"> -->
-                        <img class="icoCatalog adminOnly" src="Assets/crayon.png" alt="crayon modification">
-                        <img class="icoCatalog adminOnly" src="Assets/croix.png" alt="croix suppression">
+                      	
+                      	<c:if test = "${utilisateur.getName() == 'Admin'}">
+                      		<a href="<c:url value="/adminFonctionnality">
+  								<c:param name="change" value="${d.id}"/>
+								</c:url>"><img class="icoCatalog adminOnly" src="Assets/crayon.png" alt="crayon modification">
+							</a>
+                      		
+							
+							<a href="<c:url value="/catalogPage">
+  								<c:param name="suppr" value="${d.id}"/>
+								</c:url>"><img class="icoCatalog adminOnly" src="Assets/croix.png" alt="croix suppression">
+							</a>                        
+      					</c:if>
+                        
+                        
                     </div>
                     
                 </div>
@@ -87,221 +105,8 @@
                 
                 </c:forEach>
                 
-                <div class="mainContentItem horizontalItem primaryAxisflexContent max2itemContainer max2item textLink">
-                    <h2 class="name mainFullContentItem ">Sauternes Blanc 2019</h2>
-                    <img class="bottlePicture horizontalItem " src="https://www.vinatis.com/64473-thickbox_default/chateau-haut-brion-2019-1er-cru-classe.png" alt="chateau haut brion boouteille 2019">
                 
-                    <div class="horizontalItem presentContent">
-                        <p class="description">
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
-                        </p>
-                        <ul>
-                            <li>
-                                <p class="year">Mill&eacutesime : <span>2019</span></p>
-                            </li>
-                            <li>
-                                <p class="castle">Ch�teau : <span>Mission Haut Brian</span></p>
-                            </li>
-                            <li>
-                                <p class="region">R&eacutegion : <span>P&eacutessac L&eacuteogan</span></p>
-                            </li>
-                            <li>
-                                <p class="alcoholPourcent">Degr&eacute : <span>8</span> %</p>
-                            </li>
-                            <li>
-                                <p class="volume">Volume : <span>75</span>cl</p>
-                            </li>
-                            <li>
-                                <p class="price">Prix : <span>45</span> &euro;</p>
-                            </li>
-                        </ul>
-                    </div>
                 
-                    <div class=" icoCatalogContainer">
-                        <div class="pushDiv"></div>
-                        <!-- Enleve une quantit� du panier -->
-                        <img class="icoCatalog userOnly" src="Assets/moins.png" alt="moins suppression panier">
-                        <!-- affiche le nombre pr�sent dans le panier -->
-                        <input class="icoCatalog userOnly" value="0" style="text-align: center;">  
-                        <!-- Ajouter une quantit� au panier -->
-                        <img class="icoCatalog userOnly" src="Assets/plus.png" alt="plus ajout panier" > 
-                        <!-- <img class="icoCatalog" src="Assets/ajouter-un-panier.png" alt="ajout au panier"> -->
-                        <img class="icoCatalog adminOnly" src="Assets/crayon.png" alt="crayon modification">
-                        <img class="icoCatalog adminOnly" src="Assets/croix.png" alt="croix suppression">
-                    </div>
-                </div>
-                <div class="mainContentItem horizontalItem primaryAxisflexContent max2itemContainer max2item textLink">
-                    <h2 class="name mainFullContentItem ">Sauternes Blanc 2019</h2>
-                    <img class="bottlePicture horizontalItem " src="https://www.vinatis.com/64473-thickbox_default/chateau-haut-brion-2019-1er-cru-classe.png" alt="chateau haut brion boouteille 2019">
-                
-                    <div class="horizontalItem presentContent">
-                        <p class="description">
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
-                        </p>
-                        <ul>
-                            <li>
-                                <p class="year">Mill&eacutesime : <span>2019</span></p>
-                            </li>
-                            <li>
-                                <p class="castle">Ch�teau : <span>Mission Haut Brian</span></p>
-                            </li>
-                            <li>
-                                <p class="region">R&eacutegion : <span>P&eacutessac L&eacuteogan</span></p>
-                            </li>
-                            <li>
-                                <p class="alcoholPourcent">Degr&eacute : <span>8</span> %</p>
-                            </li>
-                            <li>
-                                <p class="volume">Volume : <span>75</span>cl</p>
-                            </li>
-                            <li>
-                                <p class="price">Prix : <span>45</span> &euro;</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class=" icoCatalogContainer">
-                        <div class="pushDiv"></div>
-                        <!-- Enleve une quantit� du panier -->
-                        <img class="icoCatalog userOnly" src="Assets/moins.png" alt="moins suppression panier">
-                        <!-- affiche le nombre pr�sent dans le panier -->
-                        <input class="icoCatalog userOnly" value="0" style="text-align: center;">  
-                        <!-- Ajouter une quantit� au panier -->
-                        <img class="icoCatalog userOnly" src="Assets/plus.png" alt="plus ajout panier" > 
-                        <!-- <img class="icoCatalog" src="Assets/ajouter-un-panier.png" alt="ajout au panier"> -->
-                        <img class="icoCatalog adminOnly" src="Assets/crayon.png" alt="crayon modification">
-                        <img class="icoCatalog adminOnly" src="Assets/croix.png" alt="croix suppression">
-                    </div>
-                </div>
-                <div class="mainContentItem horizontalItem primaryAxisflexContent max2itemContainer max2item textLink">
-                    <h2 class="name mainFullContentItem ">Sauternes Blanc 2019</h2>
-                    <img class="bottlePicture horizontalItem " src="https://www.vinatis.com/64473-thickbox_default/chateau-haut-brion-2019-1er-cru-classe.png" alt="chateau haut brion boouteille 2019">
-                
-                    <div class="horizontalItem presentContent">
-                        <p class="description">
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
-                        </p>
-                        <ul>
-                            <li>
-                                <p class="year">Mill&eacutesime : <span>2019</span></p>
-                            </li>
-                            <li>
-                                <p class="castle">Ch�teau : <span>Mission Haut Brian</span></p>
-                            </li>
-                            <li>
-                                <p class="region">R&eacutegion : <span>P&eacutessac L&eacuteogan</span></p>
-                            </li>
-                            <li>
-                                <p class="alcoholPourcent">Degr&eacute : <span>8</span> %</p>
-                            </li>
-                            <li>
-                                <p class="volume">Volume : <span>75</span>cl</p>
-                            </li>
-                            <li>
-                                <p class="price">Prix : <span>45</span> &euro;</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class=" icoCatalogContainer">
-                        <div class="pushDiv"></div>
-                        <!-- Enleve une quantit� du panier -->
-                        <img class="icoCatalog userOnly" src="Assets/moins.png" alt="moins suppression panier">
-                        <!-- affiche le nombre pr�sent dans le panier -->
-                        <input class="icoCatalog userOnly" value="0" style="text-align: center;">  
-                        <!-- Ajouter une quantit� au panier -->
-                        <img class="icoCatalog userOnly" src="Assets/plus.png" alt="plus ajout panier" > 
-                        <!-- <img class="icoCatalog" src="Assets/ajouter-un-panier.png" alt="ajout au panier"> -->
-                        <img class="icoCatalog adminOnly" src="Assets/crayon.png" alt="crayon modification">
-                        <img class="icoCatalog adminOnly" src="Assets/croix.png" alt="croix suppression">
-                    </div>
-                </div>
-                <div class="mainContentItem horizontalItem primaryAxisflexContent max2itemContainer max2item textLink">
-                    <h2 class="name mainFullContentItem ">Sauternes Blanc 2019</h2>
-                    <img class="bottlePicture horizontalItem " src="https://www.vinatis.com/64473-thickbox_default/chateau-haut-brion-2019-1er-cru-classe.png" alt="chateau haut brion boouteille 2019">
-                
-                    <div class="horizontalItem presentContent">
-                        <p class="description">
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
-                        </p>
-                        <ul>
-                            <li>
-                                <p class="year">Mill&eacutesime : <span>2019</span></p>
-                            </li>
-                            <li>
-                                <p class="castle">Ch�teau : <span>Mission Haut Brian</span></p>
-                            </li>
-                            <li>
-                                <p class="region">R&eacutegion : <span>P&eacutessac L&eacuteogan</span></p>
-                            </li>
-                            <li>
-                                <p class="alcoholPourcent">Degr&eacute : <span>8</span> %</p>
-                            </li>
-                            <li>
-                                <p class="volume">Volume : <span>75</span>cl</p>
-                            </li>
-                            <li>
-                                <p class="price">Prix : <span>45</span> &euro;</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class=" icoCatalogContainer">
-                        <div class="pushDiv"></div>
-                        <!-- Enleve une quantit� du panier -->
-                        <img class="icoCatalog userOnly" src="Assets/moins.png" alt="moins suppression panier">
-                        <!-- affiche le nombre pr�sent dans le panier -->
-                        <input class="icoCatalog userOnly" value="0" style="text-align: center;">  
-                        <!-- Ajouter une quantit� au panier -->
-                        <img class="icoCatalog userOnly" src="Assets/plus.png" alt="plus ajout panier" > 
-                        <!-- <img class="icoCatalog" src="Assets/ajouter-un-panier.png" alt="ajout au panier"> -->
-                        <img class="icoCatalog adminOnly" src="Assets/crayon.png" alt="crayon modification">
-                        <img class="icoCatalog adminOnly" src="Assets/croix.png" alt="croix suppression">
-                    </div>
-                </div>
-                <div class="mainContentItem horizontalItem primaryAxisflexContent max2itemContainer max2item textLink">
-                    <h2 class="name mainFullContentItem ">Sauternes Blanc 2019</h2>
-                    <img class="bottlePicture horizontalItem " src="https://www.vinatis.com/64473-thickbox_default/chateau-haut-brion-2019-1er-cru-classe.png" alt="chateau haut brion boouteille 2019">
-                
-                    <div class="horizontalItem presentContent">
-                        <p class="description">
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
-                        </p>
-                        <ul>
-                            <li>
-                                <p class="year">Mill&eacutesime : <span>2019</span></p>
-                            </li>
-                            <li>
-                                <p class="castle">Ch�teau : <span>Mission Haut Brian</span></p>
-                            </li>
-                            <li>
-                                <p class="region">R&eacutegion : <span>P&eacutessac L&eacuteogan</span></p>
-                            </li>
-                            <li>
-                                <p class="alcoholPourcent">Degr&eacute : <span>8</span> %</p>
-                            </li>
-                            <li>
-                                <p class="volume">Volume : <span>75</span>cl</p>
-                            </li>
-                            <li>
-                                <p class="price">Prix : <span>45</span> &euro;</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class=" icoCatalogContainer">
-                        <div class="pushDiv"></div>
-                        <!-- Enleve une quantit� du panier -->
-                        <img class="icoCatalog userOnly" src="Assets/moins.png" alt="moins suppression panier">
-                        <!-- affiche le nombre pr�sent dans le panier -->
-                        <input class="icoCatalog userOnly" value="0" style="text-align: center;">  
-                        <!-- Ajouter une quantit� au panier -->
-                        <img class="icoCatalog userOnly" src="Assets/plus.png" alt="plus ajout panier" > 
-                        <!-- <img class="icoCatalog" src="Assets/ajouter-un-panier.png" alt="ajout au panier"> -->
-                        <img class="icoCatalog adminOnly" src="Assets/crayon.png" alt="crayon modification">
-                        <img class="icoCatalog adminOnly" src="Assets/croix.png" alt="croix suppression">
-                    
-                    
-				
-    
-                    </div>
-                </div>
                  
 
         </div>
