@@ -1,0 +1,81 @@
+/* Colors : 
+#778745 : vert
+#bd9850 : marron
+#FEFAE0 : jaune clair
+rgba(255, 255, 255, 0.3) : blanc clair transparent
+ */
+body{
+    margin: 0;
+    min-width: 100vw;
+    max-height: 100vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #FEFAE0;
+}
+.header{
+    background:url("Assets/Foire\ aux\ vins.jpg") no-repeat 50% 50%;
+    background-size: cover;
+    height: 100vh;
+}
+#secondTypeHeader{
+    height: 30vh;
+}
+.navContainer{/* axe principal : abscisse */
+    /* border: 1px solid red; */
+    background-color: rgba(50, 50, 50, 0.8);
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.textLink{
+    flex-grow: 2;
+    padding: 1vh 0;
+}
+.ico{
+    flex-grow: 0.5;
+    max-width: 5vw;
+}
+
+.icoImg{
+    max-height: 3vh;
+}
+.whiteFont{
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+
+.logo{
+    flex-grow: 3;
+    text-align: center;
+    max-height: 8vh;
+}
+#bigMainTitle{
+    font-size: 70px;
+    text-shadow:rgb(50,50,50) 2PX 2PX ;
+    text-align: center;
+    color: white;
+    font-family: Palatino, URW Palladio L, serif;
+    margin-top: 25vh;
+    white-space: wrap;
+}
+#secondTypeHeader #bigMainTitle{
+    margin-top: 15vh;
+}
+@media (max-width: 730px){
+    
+    .textLink{
+        flex-grow: 2;
+        padding: 1vh 0;
+    }
+    .ico{
+        flex-grow: 0.5;
+        
+    }
+    .whiteFont{
+        font-size: 2vw;
+    }
+    #bigMainTitle{
+        font-size: 10vw;
+    }
+}

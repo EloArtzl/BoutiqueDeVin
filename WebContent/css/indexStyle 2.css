@@ -1,0 +1,35 @@
+
+a{
+    text-decoration: none;
+    color: #778745;
+}
+
+h1{
+    color: #778745;
+}
+
+.mediumSizePicture{
+    max-height: 20vh;
+}
+.mainContent{
+    /* border: 1px solid green;
+    background-color: lightgreen; */
+    flex-wrap: wrap;
+    padding: 1vh 5vw;
+}
+
+.mainFullContentItem{
+    flex-basis: 100%;
+    text-align: justify;
+    flex-wrap: wrap;
+}
+
+.bottonFont{
+    text-align: center;
+    color: black;
+}
+.bottonFont:hover{
+    text-decoration: underline;
+}
+
+
