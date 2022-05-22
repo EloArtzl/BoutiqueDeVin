@@ -9,7 +9,7 @@ public class Admin extends Personne{
 
 	private static Admin instance=null;
 	
-	public static Admin getInstance(){
+	public static Admin getInstance() throws ErrorAdd{
         if(instance==null){
             
             Personne p= new Personne();
@@ -18,6 +18,8 @@ public class Admin extends Personne{
             p.setMotDepasse(mot_de_passe);
             
             instance= (Admin) p;
+            
+            Annuaire.getInstance().addPersonne(p);
         }
         return instance;
     }

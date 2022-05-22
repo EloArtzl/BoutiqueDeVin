@@ -27,10 +27,19 @@ public class Annuaire {
     }
 	
 	public String getNameOfPersonne(String email) {
-		return this.personnes.get(email).getName();
+		if (email != null) {
+			if (personnes.containsKey(email)) { return this.personnes.get(email).getName();}else {return "";}
+		}else {
+			return "";
+		}
 	}
 	public String getSurNameOfPersonne(String email) {
-		return this.personnes.get(email).getSirname();
+		if (email != null) {
+			if (personnes.containsKey(email)) { return this.personnes.get(email).getSirname();}else {return "";}
+		}else {
+			return "";
+		}
+		
 	}
 	
 	
@@ -81,10 +90,12 @@ public class Annuaire {
 			Map.Entry entree=(Map.Entry)iter.next(); //un coupe de valeur (clé et valeur)
     		Object cle=entree.getKey(); // on récupére juste la cléf
     		Object valeur=entree.getValue();// on récupére la valeur
-    		Personne k = (Personne)cle; // je fait un cast 
-    		int v= (int)valeur;
+    		Personne k = (Personne)valeur; // je fait un cast 
+    		//System.out.println(valeur);
+    		//System.out.println(k);
+    		//int v= (int)valeur;
     		 
-    		result2= result2 + "[(" +k+" ," +v + ")]";
+    		result2= result2 + "[(" + k + ")]";
     	}
     	result2+="}";
     	return result2;

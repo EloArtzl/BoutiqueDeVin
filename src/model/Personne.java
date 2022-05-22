@@ -65,7 +65,7 @@ public class Personne {
 		return "Personne [name=" + name + ", sirname=" + sirname + ", email=" + email + ", id=" + id + "]";
 	}
 	public Boolean isTheGoodPassword(String pw) {
-		if (this.motDepasse == pw) {
+		if (this.motDepasse.equals(pw)) {
 			return true;
 		}else {
 			return false;

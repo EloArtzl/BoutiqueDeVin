@@ -10,9 +10,14 @@ public final class ConnexionForm {
     private static final String CHAMP_PASS   = "passwordUserConnect";
 
     private String              resultat;
-    private Map<String, String> erreurs      = new HashMap<String, String>();
+    private Map<String, String> erreurs;
 
-    public String getResultat() {
+    public ConnexionForm() {
+    	erreurs = new HashMap<String, String>();
+    	// TODO Auto-generated constructor stub
+	}
+
+	public String getResultat() {
         return resultat;
     }
 
@@ -33,6 +38,7 @@ public final class ConnexionForm {
         } catch ( Exception e ) {
             setErreur( CHAMP_EMAIL, e.getMessage() );
         }
+        
         utilisateur.setEmail( email );
 
         
@@ -63,6 +69,9 @@ public final class ConnexionForm {
         if ( email != null && !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
             throw new Exception( "Merci de saisir une adresse mail valide." );
         }
+        if (!Annuaire.getInstance().containsEmail(email)) {
+        	throw new Exception( "Veuillez creer un compte avant de vous connecter" );
+		}
     }
 
     /**
